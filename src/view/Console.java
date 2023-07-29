@@ -1,9 +1,9 @@
 package view;
 
 import model.Animal;
-import model.animal.Pet;
 import presenter.Presenter;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static jdk.internal.net.http.common.Utils.close;
@@ -97,28 +97,29 @@ public class Console extends View {
         System.out.println(COMMAND_NAME);
         String name = scanner.nextLine();
         Animal animal = searchAnimal(name);
-
+        List<String> commands = null;
         if (animal != null) {
-            System.out.printf("\n%s:", animal.getName());
-            for (String command : ((Pet) animal).getCommands()) {
+            commands = this.presenter.commands(animal);
+        }
+
+        if (commands != null) {
+            System.out.printf("\n%s - %s:", animal.getAnimalType(), animal.getName());
+            for (String command : commands) {
                 System.out.printf("\t- %s", command);
             }
         }
     }
 
     private Animal searchAnimal(String name) {
-        for (Animal animal : this.presenter.list()) {
-            if (animal.getName().equals(name) && animal instanceof Pet) {
-                return animal;
-            }
-        }
-        return null;
+        Animal animal = this.presenter.search(name);
+        return animal;
     }
 
     private void teachCommandToAnimal() {
         System.out.println(COMMAND_NAME);
         String name = scanner.nextLine();
-        searchAnimal(name);
+        Animal animal = searchAnimal(name);
+
     }
 
     private void end() {

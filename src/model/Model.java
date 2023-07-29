@@ -44,7 +44,7 @@ public class Model {
 
     public Animal findAnimal(String name) {
         for (Animal animal : this.animals) {
-            if (animal.getName().equals(name) && animal instanceof Pet) {
+            if (animal.getName().equals(name)) {
                 return animal;
             }
         }

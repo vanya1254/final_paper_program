@@ -20,12 +20,20 @@ public class Presenter {
         return this.model.getAnimalTypes();
     }
 
+    public List<Animal> list() {
+        return this.model.getAnimals();
+    }
+
+    public List<String> commands(Animal animal) {
+        return this.model.getAnimalCommands(animal);
+    }
+
     public void add(String name, String type, String residence, String howUsed) {
         this.model.addAnimal(name, type, residence, howUsed);
     }
 
-    public List<Animal> list() {
-        return this.model.getAnimals();
+    public Animal search(String name) {
+        return this.model.findAnimal(name);
     }
 
     public void start(){
