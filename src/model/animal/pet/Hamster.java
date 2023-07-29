@@ -5,13 +5,14 @@ import model.animal.Pet;
 import java.util.List;
 
 public class Hamster extends Pet {
+    private String TYPE = "Hamster";
 
-    public Hamster(String name, String residence, String howUsed, List<String> commands) {
-        super(name, residence, howUsed, commands);
+    public Hamster(String name, String residence, String howUsed) {
+        super(name, residence, howUsed);
     }
 
     @Override
     public String getAnimalType() {
-        return "Hamster";
+        return TYPE;
     }
 }

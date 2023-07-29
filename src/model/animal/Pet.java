@@ -9,7 +9,7 @@ public abstract class Pet extends Animal {
     private String howUsed;
     private List<String> commands;
 
-    public Pet(String name, String residence, String howUsed, List<String> commands) {
+    public Pet(String name, String residence, String howUsed) {
         super(name, residence);
         this.howUsed = howUsed;
         this.commands = new ArrayList<>();

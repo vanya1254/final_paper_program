@@ -1,5 +1,6 @@
-import model.Counter;
+
 import presenter.Presenter;
+import view.Console;
 
 /**
  * 13.Создать класс с Инкапсуляцией методов и наследованием по диаграмме.
@@ -20,6 +21,7 @@ import presenter.Presenter;
 
 public class Main {
     public static void main(String[] args) {
-
+        Presenter presenter = new Presenter();
+        presenter.start();
     }
 }
