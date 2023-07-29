@@ -1,6 +1,5 @@
 
 import presenter.Presenter;
-import view.Console;
 
 /**
  * 13.Создать класс с Инкапсуляцией методов и наследованием по диаграмме.

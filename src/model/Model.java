@@ -56,13 +56,26 @@ public class Model {
             case "dog":
                 animals.add(new Dog(name, residence, howUsed));
                 getCounter().add();
+                break;
             case "cat":
                 animals.add(new Cat(name, residence, howUsed));
                 getCounter().add();
+                break;
             case "hamster":
                 animals.add(new Hamster(name, residence, howUsed));
                 getCounter().add();
+                break;
         }
+    }
+
+    public Boolean addCommand(String command, String name) {
+        for (int i = 0; i < this.animals.size(); i++) {
+            if (animals.get(i).getName().equals(name) && animals.get(i) instanceof Pet){
+                ((Pet) animals.get(i)).teachCommand(command);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void end() {

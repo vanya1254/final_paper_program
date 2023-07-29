@@ -6,6 +6,7 @@ import presenter.Presenter;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
 import static jdk.internal.net.http.common.Utils.close;
 
 public class Console extends View {
@@ -15,6 +16,9 @@ public class Console extends View {
     private static final String COMMAND_TYPE = "Enter animal type (Dog/Cat/Hamster): ";
     private static final String COMMAND_RESIDENCE = "Enter animal residence: ";
     private static final String COMMAND_HOW_USED = "Enter animal how used: ";
+    private static final String COMMAND_COMMAND = "Enter new command to teach: ";
+    private static final String COMMAND_ADD = "New command added.";
+    private static final String COMMAND_ERROR_NAME = "Pet not found.";
     private static final String COMMAND_MESSAGE = "Enter command: ";
     private static final String COMMAND_ERROR = "Invalid Command. Try again.";
     private static final String COMMAND_ERROR_TYPE = "Invalid animal type.";
@@ -25,8 +29,7 @@ public class Console extends View {
     }
 
     private void showMenu() {
-        System.out.println("Welcome to the Animal Registry!");
-        System.out.println("Available commands:");
+        System.out.println("\nAvailable commands:");
         System.out.println("1. Add new animal");
         System.out.println("2. List all animals");
         System.out.println("3. Show animal commands");
@@ -89,7 +92,7 @@ public class Console extends View {
 
     private void listAllAnimal() {
         for (Animal animal : this.presenter.list()) {
-            System.out.printf("\n%s - %s", animal.getAnimalType(), animal.getName());
+            System.out.printf("%s - %s\n", animal.getAnimalType(), animal.getName());
         }
     }
 
@@ -118,13 +121,19 @@ public class Console extends View {
     private void teachCommandToAnimal() {
         System.out.println(COMMAND_NAME);
         String name = scanner.nextLine();
-        Animal animal = searchAnimal(name);
+        System.out.println(COMMAND_COMMAND);
+        String command = scanner.nextLine();
 
+        if (this.presenter.teach(command, name)) {
+            System.out.println(COMMAND_ADD);
+        } else {
+            System.out.println(COMMAND_ERROR_NAME);
+        }
     }
 
     private void end() {
         this.scanner.close();
         this.presenter.end();
-        close();
+        exit(0);
     }
 }

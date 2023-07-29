@@ -36,6 +36,10 @@ public class Presenter {
         return this.model.findAnimal(name);
     }
 
+    public Boolean teach(String command, String name) {
+        return this.model.addCommand(command, name);
+    }
+
     public void start(){
         this.view.start();
     }
