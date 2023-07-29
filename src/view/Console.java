@@ -19,6 +19,7 @@ public class Console extends View {
     private static final String COMMAND_COMMAND = "Enter new command to teach: ";
     private static final String COMMAND_ADD = "New command added.";
     private static final String COMMAND_ERROR_NAME = "Pet not found.";
+    private static final String COMMAND_ERROR_COMMAND = "Commands not found.";
     private static final String COMMAND_MESSAGE = "Enter command: ";
     private static final String COMMAND_ERROR = "Invalid Command. Try again.";
     private static final String COMMAND_ERROR_TYPE = "Invalid animal type.";
@@ -99,23 +100,25 @@ public class Console extends View {
     private void showAnimalCommands() {
         System.out.println(COMMAND_NAME);
         String name = scanner.nextLine();
-        Animal animal = searchAnimal(name);
         List<String> commands = null;
-        if (animal != null) {
-            commands = this.presenter.commands(animal);
+        if (searchAnimal(name) != null) {
+            commands = this.presenter.commands(name);
+        } else {
+            System.out.println(COMMAND_ERROR_NAME);
         }
 
         if (commands != null) {
-            System.out.printf("\n%s - %s:", animal.getAnimalType(), animal.getName());
+            System.out.printf("\nCommands:");
             for (String command : commands) {
-                System.out.printf("\t- %s", command);
+                System.out.printf("\n - %s", command);
             }
+        } else {
+            System.out.println(COMMAND_ERROR_COMMAND);
         }
     }
 
-    private Animal searchAnimal(String name) {
-        Animal animal = this.presenter.search(name);
-        return animal;
+    private Integer searchAnimal(String name) {
+        return this.presenter.search(name);
     }
 
     private void teachCommandToAnimal() {

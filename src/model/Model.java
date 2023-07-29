@@ -35,17 +35,17 @@ public class Model {
         return animalTypes;
     }
 
-    public List<String> getAnimalCommands(Animal animal) {
-        if (animal instanceof Pet) {
-            return ((Pet) animal).getCommands();
+    public List<String> getAnimalCommands(String name) {
+        if (this.animals.get(findAnimal(name)) instanceof Pet) {
+            return ((Pet) this.animals.get(findAnimal(name))).getCommands();
         }
         return null;
     }
 
-    public Animal findAnimal(String name) {
-        for (Animal animal : this.animals) {
-            if (animal.getName().equals(name)) {
-                return animal;
+    public Integer findAnimal(String name) {
+        for (int i = 0; i < this.animals.size(); i++) {
+            if (animals.get(i).getName().equals(name)){
+                return i;
             }
         }
         return null;

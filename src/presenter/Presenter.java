@@ -24,15 +24,15 @@ public class Presenter {
         return this.model.getAnimals();
     }
 
-    public List<String> commands(Animal animal) {
-        return this.model.getAnimalCommands(animal);
+    public List<String> commands(String name) {
+        return this.model.getAnimalCommands(name);
     }
 
     public void add(String name, String type, String residence, String howUsed) {
         this.model.addAnimal(name, type, residence, howUsed);
     }
 
-    public Animal search(String name) {
+    public Integer search(String name) {
         return this.model.findAnimal(name);
     }
 
