@@ -1,0 +1,20 @@
+-- Создание таблицы молодых животных
+CREATE TABLE Young_Animal (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  animal_type VARCHAR(10) NOT NULL,
+  age_in_months INT NOT NULL
+);
+
+
+-- Вставка в нее всех животных
+INSERT INTO Young_Animal (name, animal_type, age_in_months)
+SELECT 
+  name,
+  CASE
+    WHEN birth_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) THEN 'Young'
+    WHEN birth_date < DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND birth_date >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR) THEN 'Adult'
+    ELSE 'Old'
+  END AS animal_type,
+  TIMESTAMPDIFF(MONTH, birth_date, CURDATE()) AS age_in_months
+FROM Animal;

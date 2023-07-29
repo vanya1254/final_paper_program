@@ -1,0 +1,83 @@
+-- Создание таблицы родительского класса
+CREATE TABLE Animal (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  residence VARCHAR(30),
+  birth_date DATE
+);
+
+-- Создание таблицы домашних животных
+CREATE TABLE Pet (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  animal_id INT NOT NULL,
+  residence VARCHAR(30),
+  how_used VARCHAR(30),
+  FOREIGN KEY (animal_id) REFERENCES Animal(id)
+);
+
+-- Создание таблицы вьючных животных
+CREATE TABLE Pack_Animal (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  animal_id INT NOT NULL,
+  residence VARCHAR(30),
+  shod BOOLEAN,
+  FOREIGN KEY (animal_id) REFERENCES Animal(id)
+);
+
+-- Создание таблиц для домашних животных
+CREATE TABLE Dog (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  pet_id INT NOT NULL,
+  how_used VARCHAR(30),
+  command VARCHAR(50),
+  FOREIGN KEY (pet_id) REFERENCES Pet(id)
+);
+
+CREATE TABLE Cat (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  pet_id INT NOT NULL,
+  how_used VARCHAR(30),
+  command VARCHAR(50),
+  FOREIGN KEY (pet_id) REFERENCES Pet(id)
+);
+
+CREATE TABLE Hamster (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  pet_id INT NOT NULL,
+  how_used VARCHAR(30),
+  command VARCHAR(50),
+  FOREIGN KEY (pet_id) REFERENCES Pet(id)
+);
+
+-- Создание таблиц для вьючных животных
+CREATE TABLE Horse (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  pack_animal_id INT NOT NULL,
+  shod BOOLEAN,
+  command VARCHAR(50),
+  FOREIGN KEY (pack_animal_id) REFERENCES Pack_Animal(id)
+);
+
+CREATE TABLE Camel (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  pack_animal_id INT NOT NULL,
+  shod BOOLEAN,
+  command VARCHAR(50),
+  FOREIGN KEY (pack_animal_id) REFERENCES Pack_Animal(id)
+);
+
+CREATE TABLE Donkey (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  pack_animal_id INT NOT NULL,
+  shod BOOLEAN,
+  command VARCHAR(50),
+  FOREIGN KEY (pack_animal_id) REFERENCES Pack_Animal(id)
+);

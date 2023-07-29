@@ -1,0 +1,84 @@
+-- Создание таблицы для всех
+CREATE TABLE All_Animal (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  animal_type VARCHAR(10) NOT NULL,
+  residence VARCHAR(30),
+  birth_date DATE,
+  how_used VARCHAR(30),
+  shod BOOLEAN,
+  command VARCHAR(50),
+  pet_id INT,
+  animal_id INT,
+  pack_animal_id INT,
+  source_table VARCHAR(20) NOT NULL
+);
+
+-- Вставка собак
+INSERT INTO All_Animal (name, animal_type, residence, birth_date, how_used, shod, command, pet_id, source_table)
+SELECT
+  name,
+  'Dog' AS animal_type,
+  residence,
+  birth_date,
+  how_used,
+  NULL AS shod,
+  command,
+  id AS pet_id,
+  'Dog' AS source_table
+FROM Dog;
+
+-- Вставка котов
+INSERT INTO All_Animal (name, animal_type, how_used, command, pet_id, source_table)
+SELECT
+  name,
+  'Cat' AS animal_type,
+  how_used,
+  command,
+  id AS pet_id,
+  'Cat' AS source_table
+FROM Cat;
+
+-- Вставка хомяков
+INSERT INTO All_Animal (name, animal_type, how_used, command, pet_id, source_table)
+SELECT
+  name,
+  'Hamster' AS animal_type,
+  how_used,
+  command,
+  id AS pet_id,
+  'Hamster' AS source_table
+FROM Hamster;
+
+-- Вставка лошадей
+INSERT INTO All_Animal (name, animal_type, shod, command, pack_animal_id, source_table)
+SELECT
+  name,
+  'Horse' AS animal_type,
+  shod,
+  command,
+  id AS pack_animal_id,
+  'Horse' AS source_table
+FROM Horse;
+
+-- Вставка верблюдов
+INSERT INTO All_Animal (name, animal_type, pack_animal_id, shod, command, source_table)
+SELECT
+  name,
+  'Camel' AS animal_type,
+  id AS pack_animal_id,
+  shod,
+  command,
+  'Camel' AS source_table
+FROM Camel;
+
+-- Вставка ослов
+INSERT INTO All_Animal (name, animal_type, pack_animal_id, shod, command, source_table)
+SELECT
+  name,
+  'Donkey' AS animal_type,
+  id AS pack_animal_id,
+  shod,
+  command,
+  'Donkey' AS source_table
+FROM Donkey;

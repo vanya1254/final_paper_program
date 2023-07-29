@@ -1,0 +1,50 @@
+-- Заполнение таблицы Animal
+INSERT INTO Animal (name, residence, birth_date) VALUES
+  ('Buddy', 'New York', '2020-05-15'),
+  ('Luna', 'Los Angeles', '2019-08-10'),
+  ('Nibbles', 'London', '2022-01-20'),
+  ('Thunder', 'Texas', '2018-11-30'),
+  ('Sahara', 'Arizona', '2020-02-25'),
+  ('Eeyore', 'Voronezh', '2017-06-12');
+
+-- Заполнение таблицы Pet
+INSERT INTO Pet (name, animal_id, residence, how_used) VALUES
+  ('Buddy', 1, 'New York', 'Guarding house'),
+  ('Luna', 2, 'Los Angeles', 'Catching mice'),
+  ('Nibbles', 3, 'London', 'Running in wheel');
+
+-- Заполнение таблицы Pack_Animal
+INSERT INTO Pack_Animal (name, animal_id, residence, shod) VALUES
+  ('Thunder', 4, 'Texas', TRUE),
+  ('Sahara', 5, 'Arizona', FALSE),
+  ('Eeyore', 6, 'Voronezh', FALSE);
+
+-- Заполнение таблицы Dog
+INSERT INTO Dog (name, pet_id, how_used, command) VALUES
+  ('Max', 1, 'Fetching ball', 'Sit'),
+  ('Bailey', 1, 'Assisting in therapy', 'Lie down');
+
+-- Заполнение таблицы Cat
+INSERT INTO Cat (name, pet_id, how_used, command) VALUES
+  ('Oliver', 2, 'Sleeping in sun', 'Meow'),
+  ('Milo', 2, 'Hunting birds', 'Pounce');
+
+-- Заполнение таблицы Hamster
+INSERT INTO Hamster (name, pet_id, how_used, command) VALUES
+  ('Snowball', 3, 'Exercising on wheel', 'Run'),
+  ('Nibbles', 3, 'Building nests', 'Gather food');
+
+-- Заполнение таблицы Horse
+INSERT INTO Horse (name, pack_animal_id, shod, command) VALUES
+  ('Spirit', 1, TRUE, 'Gallop'),
+  ('Apollo', 1, FALSE, 'Trot');
+
+-- Заполнение таблицы Camel
+INSERT INTO Camel (name, pack_animal_id, shod, command) VALUES
+  ('Desert Rose', 2, TRUE, 'Carry loads'),
+  ('Sahara Sunrise', 2, TRUE, 'Walk gracefully');
+
+-- Заполнение таблицы Donkey
+INSERT INTO Donkey (name, pack_animal_id, shod, command) VALUES
+  ('Eeyore', 3, FALSE, 'Bray'),
+  ('Dusty', 3, FALSE, 'Carry loads');

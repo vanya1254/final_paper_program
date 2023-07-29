@@ -1,0 +1,9 @@
+-- Удалить из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку.
+DELETE FROM camel;
+
+-- Объединить таблицы лошади, и ослы в одну таблицу.
+SELECT id, name, id, pack_animal_id, shod, command
+FROM Horse
+UNION
+SELECT id, name, id, pack_animal_id, shod, command
+FROM Donkey;
