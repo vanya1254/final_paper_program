@@ -2,10 +2,10 @@ package model.animal.pack_animal;
 
 import model.animal.PackAnimal;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Donkey extends PackAnimal {
+
+    private String TYPE = "Donkey";
 
     public Donkey(String name, String residence, Boolean shod) {
         super(name, residence, shod);
@@ -13,6 +13,6 @@ public class Donkey extends PackAnimal {
 
     @Override
     public String getAnimalType() {
-        return "Donkey";
+        return TYPE;
     }
 }

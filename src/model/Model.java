@@ -27,6 +27,9 @@ public class Model {
         return counter;
     }
 
+    public Integer getCount() {
+        return this.counter.getCount();
+    }
     public List<Animal> getAnimals() {
         return animals;
     }
@@ -36,7 +39,8 @@ public class Model {
     }
 
     public List<String> getAnimalCommands(String name) {
-        if (this.animals.get(findAnimal(name)) instanceof Pet) {
+        Integer index = findAnimal(name);
+        if (this.animals.get(index) instanceof Pet) {
             return ((Pet) this.animals.get(findAnimal(name))).getCommands();
         }
         return null;
@@ -44,7 +48,7 @@ public class Model {
 
     public Integer findAnimal(String name) {
         for (int i = 0; i < this.animals.size(); i++) {
-            if (animals.get(i).getName().equals(name)){
+            if (this.animals.get(i).getName().equals(name)){
                 return i;
             }
         }

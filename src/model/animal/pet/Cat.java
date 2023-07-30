@@ -2,7 +2,6 @@ package model.animal.pet;
 
 import model.animal.Pet;
 
-import java.util.List;
 
 public class Cat extends Pet {
     private String TYPE = "Cat";

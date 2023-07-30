@@ -2,8 +2,6 @@ package model.animal.pet;
 
 import model.animal.Pet;
 
-import java.util.List;
-
 public class Hamster extends Pet {
     private String TYPE = "Hamster";
 

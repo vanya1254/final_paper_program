@@ -32,12 +32,12 @@ public class Presenter {
         this.model.addAnimal(name, type, residence, howUsed);
     }
 
-    public Integer search(String name) {
-        return this.model.findAnimal(name);
-    }
-
     public Boolean teach(String command, String name) {
         return this.model.addCommand(command, name);
+    }
+
+    public Integer counter() {
+        return this.model.getCount();
     }
 
     public void start(){

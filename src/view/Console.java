@@ -35,6 +35,7 @@ public class Console extends View {
         System.out.println("2. List all animals");
         System.out.println("3. Show animal commands");
         System.out.println("4. Teach new command to an animal");
+        System.out.println("5. Get Counter");
         System.out.println("Type 'exit' to quit the program.");
     }
 
@@ -50,6 +51,7 @@ public class Console extends View {
             case "2" -> listAllAnimal();
             case "3" -> showAnimalCommands();
             case "4" -> teachCommandToAnimal();
+            case "5" -> getCounter();
             case "exit" -> end();
             default -> System.out.println(COMMAND_ERROR);
         }
@@ -100,25 +102,18 @@ public class Console extends View {
     private void showAnimalCommands() {
         System.out.println(COMMAND_NAME);
         String name = scanner.nextLine();
-        List<String> commands = null;
-        if (searchAnimal(name) != null) {
-            commands = this.presenter.commands(name);
-        } else {
-            System.out.println(COMMAND_ERROR_NAME);
-        }
+        List<String> commands = this.presenter.commands(name);
 
-        if (commands != null) {
+        if (commands == null) {
+            System.out.println(COMMAND_ERROR_NAME);
+        } else if (commands.size() == 0){
+            System.out.println(COMMAND_ERROR_COMMAND);
+        } else {
             System.out.printf("\nCommands:");
             for (String command : commands) {
                 System.out.printf("\n - %s", command);
             }
-        } else {
-            System.out.println(COMMAND_ERROR_COMMAND);
         }
-    }
-
-    private Integer searchAnimal(String name) {
-        return this.presenter.search(name);
     }
 
     private void teachCommandToAnimal() {
@@ -132,6 +127,12 @@ public class Console extends View {
         } else {
             System.out.println(COMMAND_ERROR_NAME);
         }
+    }
+
+    private void getCounter() {
+        Integer count = this.presenter.counter();
+
+        System.out.printf("Counter: %d\n", count);
     }
 
     private void end() {
