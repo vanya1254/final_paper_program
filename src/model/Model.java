@@ -30,6 +30,7 @@ public class Model {
     public Integer getCount() {
         return this.counter.getCount();
     }
+
     public List<Animal> getAnimals() {
         return animals;
     }
@@ -48,7 +49,7 @@ public class Model {
 
     public Integer findAnimal(String name) {
         for (int i = 0; i < this.animals.size(); i++) {
-            if (this.animals.get(i).getName().equals(name)){
+            if (this.animals.get(i).getName().equals(name)) {
                 return i;
             }
         }
@@ -74,7 +75,7 @@ public class Model {
 
     public Boolean addCommand(String command, String name) {
         for (int i = 0; i < this.animals.size(); i++) {
-            if (animals.get(i).getName().equals(name) && animals.get(i) instanceof Pet){
+            if (animals.get(i).getName().equals(name) && animals.get(i) instanceof Pet) {
                 ((Pet) animals.get(i)).teachCommand(command);
                 return true;
             }

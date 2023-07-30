@@ -40,11 +40,11 @@ public class Presenter {
         return this.model.getCount();
     }
 
-    public void start(){
+    public void start() {
         this.view.start();
     }
 
-    public void end(){
+    public void end() {
         this.model.end();
     }
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
-import static jdk.internal.net.http.common.Utils.close;
 
 public class Console extends View {
     private Presenter presenter;
@@ -46,7 +45,7 @@ public class Console extends View {
     }
 
     public void menu(String command) {
-        switch(command) {
+        switch (command) {
             case "1" -> addNewAnimal();
             case "2" -> listAllAnimal();
             case "3" -> showAnimalCommands();
@@ -106,10 +105,10 @@ public class Console extends View {
 
         if (commands == null) {
             System.out.println(COMMAND_ERROR_NAME);
-        } else if (commands.size() == 0){
+        } else if (commands.size() == 0) {
             System.out.println(COMMAND_ERROR_COMMAND);
         } else {
-            System.out.printf("\nCommands:");
+            System.out.print("\nCommands:");
             for (String command : commands) {
                 System.out.printf("\n - %s", command);
             }
